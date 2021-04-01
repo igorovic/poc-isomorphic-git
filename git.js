@@ -34,6 +34,9 @@ let pushResult = git.push({
   onAuthSuccess: (url, auth) => {
 	  console.log(url);
 	  console.log(auth);
+  },
+  headers: {
+	  Authentication: "Bearer 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",
   }
 }).then((result) => {
 	console.log(result);
