@@ -24,7 +24,7 @@ let pushResult = git.push({
   ref: 'main',
   onAuth: () => ({
       oauth2format: 'github',
-      token: "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",
+      token: "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",
   })
 }).then((result) => console.log(result))
 .catch((err) => console.log("error", err));
