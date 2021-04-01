@@ -23,7 +23,7 @@ let pushResult = git.push({
   remote: 'origin',
   ref: 'main',
   onAuth: () => ({
-      oauth2format: 'github',
+      //oauth2format: 'github',
       token: "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",
   })
 }).then((result) => console.log(result))
