@@ -26,7 +26,7 @@ let pushResult = git.push({
   token: "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",
   onAuth: () => {
 	  console.log("onAuth called");
-	  let X = {
+	  return {
       username: "token",
       password: "x-access-token",
       //headers: {
