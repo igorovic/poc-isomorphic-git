@@ -30,7 +30,7 @@ let pushResult = git.push({
       username: "token",
       password: "x-access-token",
       headers: {
-	   Authentication: `Bearer ${process.env.GITHUB_TOKEN}`,
+	   Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
  	     }
   }},
   onAuthSuccess: (url, auth) => {
@@ -43,7 +43,7 @@ let pushResult = git.push({
 	  console.log(auth);
   },
   headers: {
-	  Authentication: `Bearer ${process.env.GITHUB_TOKEN}`,
+	  Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
   }
 }).then((result) => {
 	console.log(result);
