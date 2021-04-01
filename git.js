@@ -37,6 +37,11 @@ let pushResult = git.push({
 	  console.log(url);
 	  console.log(auth);
   },
+  onAuthFailure: (url, auth) => {
+	  console.log("Auth failure");
+     console.log(url);
+	  console.log(auth);
+  },
   headers: {
 	  Authentication: `Bearer ${process.env.GITHUB_TOKEN}`,
   }
