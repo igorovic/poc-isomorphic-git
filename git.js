@@ -22,13 +22,13 @@ let pushResult = git.push({
   dir: './',
   remote: 'origin',
   ref: 'main',
-  oauth2format: "github",
-  token: process.env.GITHUB_TOKEN,
+  //oauth2format: "github",
+  //token: process.env.GITHUB_TOKEN,
   onAuth: () => {
 	  console.log("onAuth called");
 	  return {
-      username: "token",
-      password: "x-access-token",
+      //username: "token",
+      //password: "x-access-token",
       headers: {
 	   Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
  	     }
