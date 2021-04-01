@@ -25,11 +25,11 @@ let pushResult = git.push({
   onAuth: () => {
 	  console.log("onAuth called");
 	  return {
-      //username: "token",
-      //password: "x-oauth-basic",
-      headers: {
-	      Authentication: "Bearer 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",
-      }
+      username: "token",
+      password: "x-access-token",
+      //headers: {
+	//   Authentication: "Bearer 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",
+ 	//     }
   }},
   onAuthSuccess: (url, auth) => {
 	  console.log(url);
