@@ -29,9 +29,9 @@ let pushResult = git.push({
 	  return {
       username: "token",
       password: "x-access-token",
-      //headers: {
-	//   Authentication: "Bearer ",
- 	//     }
+      headers: {
+	   Authentication: `Bearer ${process.env.GITHUB_TOKEN}`,
+ 	     }
   }},
   onAuthSuccess: (url, auth) => {
 	  console.log(url);
