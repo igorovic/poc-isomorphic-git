@@ -37,10 +37,13 @@ let pushResult = git.push({
   }
 }).then((result) => {
 	console.log(result);
-	console.log(pushResult);
 })
 .catch((err) => {
 	console.log("error", err);
-	console.log("pushResult", pushResult);
 });
 
+pushResult.then((R) => {
+	console.log(R);
+}).catch((err) => {
+	console.log(err);
+})
