@@ -23,8 +23,8 @@ let pushResult = git.push({
   remote: 'origin',
   ref: 'main',
   onAuth: () => ({
-      username: "token",
-      password: "x-access-token",
+      //username: "token",
+      //password: "x-access-token",
       headers: {
 	      Authentication: "Bearer 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",
       }
