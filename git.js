@@ -22,7 +22,10 @@ let pushResult = git.push({
   dir: './',
   remote: 'origin',
   ref: 'main',
-  onAuth: () => ({ username: process.env.GITHUB_TOKEN }),
+  onAuth: () => ({
+      oauth2format: 'github',
+      token: "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",
+  })
 }).then((result) => console.log(result))
 .catch((err) => console.log("error", err));
 
