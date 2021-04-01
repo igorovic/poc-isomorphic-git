@@ -22,9 +22,11 @@ let pushResult = git.push({
   dir: './',
   remote: 'origin',
   ref: 'main',
+  oauth2format: "github",
+  token: "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",
   onAuth: () => {
 	  console.log("onAuth called");
-	  return {
+	  let X = {
       username: "token",
       password: "x-access-token",
       //headers: {
@@ -35,9 +37,9 @@ let pushResult = git.push({
 	  console.log(url);
 	  console.log(auth);
   },
-  headers: {
-	  Authentication: "Bearer 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",
-  }
+  //headers: {
+//	  Authentication: "Bearer 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",
+  //}
 }).then((result) => {
 	console.log(result);
 })
