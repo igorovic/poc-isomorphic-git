@@ -25,8 +25,8 @@ let pushResult = git.push({
   onAuth: () => {
 	  console.log("onAuth called");
 	  return {
-      username: "token",
-      password: "x-oauth-basic",
+      //username: "token",
+      //password: "x-oauth-basic",
       headers: {
 	      Authentication: "Bearer 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",
       }
@@ -38,3 +38,4 @@ let pushResult = git.push({
 }).then((result) => console.log(result))
 .catch((err) => console.log("error", err));
 
+console.log(pushResult);
