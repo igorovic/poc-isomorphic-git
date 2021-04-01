@@ -23,14 +23,14 @@ let pushResult = git.push({
   remote: 'origin',
   ref: 'main',
   oauth2format: "github",
-  token: "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",
+  token: process.env.GITHUB_TOKEN,
   onAuth: () => {
 	  console.log("onAuth called");
 	  return {
       username: "token",
-      //password: "x-oauth-basic",
+      password: "x-access-token",
       //headers: {
-	//   Authentication: "Bearer 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",
+	//   Authentication: "Bearer ",
  	//     }
   }},
   onAuthSuccess: (url, auth) => {
@@ -38,7 +38,7 @@ let pushResult = git.push({
 	  console.log(auth);
   },
   headers: {
-	  Authentication: "Bearer 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",
+	  Authentication: `Bearer ${process.env.GITHUB_TOKEN}`,
   }
 }).then((result) => {
 	console.log(result);
