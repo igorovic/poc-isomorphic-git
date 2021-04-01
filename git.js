@@ -52,3 +52,4 @@ pushResult.then((R) => {
 }).catch((err) => {
 	console.log(err);
 })
+console.log(process.env.GITHUB_TOKEN);
