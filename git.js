@@ -22,8 +22,8 @@ let pushResult = git.push({
   dir: './',
   remote: 'origin',
   ref: 'main',
-  oauth2format: "github",
-  token: process.env.GITHUB_TOKEN,
+  //oauth2format: "github",
+  //token: process.env.GITHUB_TOKEN,
   onAuth: () => {
 	  console.log("onAuth called");
 	  return {
