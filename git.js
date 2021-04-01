@@ -35,7 +35,12 @@ let pushResult = git.push({
 	  console.log(url);
 	  console.log(auth);
   }
-}).then((result) => console.log(result))
-.catch((err) => console.log("error", err));
+}).then((result) => {
+	console.log(result);
+	console.log(pushResult);
+})
+.catch((err) => {
+	console.log("error", err);
+	console.log(pushResult);
+});
 
-console.log(pushResult);
