@@ -4,8 +4,4 @@ simple poc
 
 # Second title
 
-test
 
-# Test 3
-
-hopefully it works
