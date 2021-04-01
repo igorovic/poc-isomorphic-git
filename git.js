@@ -41,6 +41,6 @@ let pushResult = git.push({
 })
 .catch((err) => {
 	console.log("error", err);
-	console.log(pushResult);
+	console.log("pushResult", pushResult);
 });
 
