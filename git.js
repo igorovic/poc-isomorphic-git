@@ -1,3 +1,12 @@
+/*
+push to github with isomorphic-git
+
+requirements:
+  - the current folder must be initialized with git
+  - git remote repo must be configured
+  - have a personal token or oAuth access token from github
+    - not tested with personal token but should work
+*/
 const git = require("isomorphic-git");
 const fs = require("fs");
 const http = require("isomorphic-git/http/node");
@@ -5,8 +14,10 @@ require("dotenv").config();
 
 async function runall() {
   try {
-    await git.add({ fs, dir: "./", filepath: "." }); //.then(()=>console.log('git add done'));
+    // stage all files in current directory
+    await git.add({ fs, dir: "./", filepath: "." }); 
 
+    // commit the files
     let sha = await git.commit({
       fs,
       dir: "./",
@@ -18,6 +29,7 @@ async function runall() {
     });
     console.log("sha: ", sha);
 
+    // push to the remote repo
     let pushResult = await git.push({
       fs,
       http,
