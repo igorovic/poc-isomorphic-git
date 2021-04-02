@@ -1,61 +1,55 @@
-const git = require("isomorphic-git")
-const fs = require("fs")
-const http = require('isomorphic-git/http/node')
+const git = require("isomorphic-git");
+const fs = require("fs");
+const http = require("isomorphic-git/http/node");
+require("dotenv").config();
 
-git.add({ fs, dir: './', filepath: '.' }).then(()=>console.log('git add done'));
+async function runall() {
+  try {
+    await git.add({ fs, dir: "./", filepath: "." }); //.then(()=>console.log('git add done'));
 
-let sha = git.commit({
-  fs,
-  dir: './',
-  author: {
-    name: 'Mr. Test',
-    email: 'mrtest@example.com',
-  },
-  message: 'Added the a.txt file'
-}).then(() => {
-console.log(sha);
-});
+    let sha = await git.commit({
+      fs,
+      dir: "./",
+      author: {
+        name: "Mr. Test",
+        email: "mrtest@example.com",
+      },
+      message: "did some modification",
+    });
+    console.log("sha: ", sha);
 
-let pushResult = git.push({
-  fs,
-  http,
-  dir: './',
-  remote: 'origin',
-  ref: 'main',
-  force: true,
-  //oauth2format: "github",
-  //token: process.env.GITHUB_TOKEN,
-  onAuth: () => {
-	  console.log("onAuth called");
-	  return {
-      username: "token",
-      password: process.env.GITHUB_TOKEN,
-      //headers: {
-//	   Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
- //	     }
-  }},
-  onAuthSuccess: (url, auth) => {
-	  console.log(url);
-	  console.log(auth);
-  },
-  onAuthFailure: (url, auth) => {
-	  console.log("Auth failure");
-     console.log(url);
-	  console.log(auth);
-  },
-  //headers: {
-    //Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-  //}
-}).then((result) => {
-	console.log(result);
-})
-.catch((err) => {
-	console.log("error", err);
-});
+    let pushResult = await git.push({
+      fs,
+      http,
+      dir: "./",
+      remote: "origin",
+      ref: "main",
+      force: true,
+      onAuth: () => {
+        console.log("onAuth called");
+        return {
+          username: "token",
+          password: process.env.GITHUB_TOKEN,
+        };
+      },
+      onAuthSuccess: (url, auth) => {
+        console.log("AUTH success", url, auth);
+      },
+      onAuthFailure: (url, auth) => {
+        console.log("AUTH failure", url, auth);
+      },
+    });
+    console.log("push result", pushResult);
+  } catch (err) {
+    console.error("ERROR", err);
+  }
+}
 
-pushResult.then((R) => {
-	console.log(R);
-}).catch((err) => {
-	console.log(err);
-})
-console.log(process.env.GITHUB_TOKEN);
+runall()
+  .then((R) => {
+    console.log("final result", R);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
